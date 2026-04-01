@@ -24,7 +24,7 @@ def preprocess(df: pd.DataFrame, save: bool = True) -> pd.DataFrame:
     missing_before = df.isnull().sum().sum()
     for col in df.columns:
         if df[col].isnull().any():
-            df[col].fillna(df[col].median(), inplace=True)
+            df[col] = df[col].fillna(df[col].median())
     print(f"Imputed {missing_before} missing values with column medians")
 
     # ── Drop duplicates ────────────────────────────────────────────────────────
